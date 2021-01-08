@@ -20,7 +20,7 @@
 
 但假设确实存在这么一个流程，且对按钮完全不做禁用和loading的蒙层，如果使用redux-thunk当然也能实现，但可能代码会比较零散，各种局部变量控制，而使用redux-saga就只需要以下相关代码，且相关的登录流程操作全部被写在一个saga里，代码的可读性会更好
 
-![loginFlow](http://qiniucdn.zrj1031.top/carbon (1).png)
+![loginFlow](http://qiniucdn.zrj1031.top/loginFlow.png)
 
 首先一个while(true)的死循环能保证登录-登出-登录-登出这样的重复流程事件监听
 
