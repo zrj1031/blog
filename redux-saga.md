@@ -35,5 +35,57 @@ const {payload: {username, password}} = yield take('LOGIN_REQUEST')
 const action = yield take(['LOGOUT_REQUEST', 'LOGIN_ERROR'])
 ```
 
+generator的一些理解
 
+```js
+const generatorFn = () => {
+const generatorFn = () => {
+  function* generatorCreator() {
+    const res1 = yield 123;
+    console.log(res1) // '外部第一次传入的值'
+    const res2 = yield 456;
+    console.log(res2) // '外部第二次传入的值'
+    return 789
+  }
+  const gen = generatorCreator();
+  const g1 = gen.next(); // 遇到第一个yield阻塞后续的代码
+  console.log(g1) // { value: 123, done: false } 此时阻塞在了yield 123
+  const g2 = gen.next('外部第一次传入的值'); // next传入值作为res1，并继续执行直到遇到第二个yield
+  console.log(g2) // { value: 456, done: false }
+  const g3 = gen.next('外部第二次传入的值');
+  console.log(g3)
+  const g4 = gen.next();
+  console.log(g4)
+}
+generatorFn()
+```
 
+generator的自执行
+
+```js
+function runGenerator(generatorFn) {
+  const gen = generatorFn();
+  function run(arg) {
+    const result = gen.next(arg);
+    if(result.done) {
+      return result.value
+    } else {
+      return Promise.resolve(result.value).then(run)
+    }
+  }
+  return run
+}
+
+const sleep = (timeout, data) => new Promise(resolve => setTimeout(() => resolve(data), timeout))
+function* generatorFn() {
+  const res1 = yield sleep(1000, '异步获取到的一些数据');
+  console.log(res1)
+  const res2 = yield 123;
+  console.log(res2)
+  return 'abc'
+}
+
+const result = runGenerator(generatorFn)();
+result.then(data => console.log(data))
+
+```
