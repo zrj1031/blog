@@ -94,12 +94,11 @@ ddlWebpackPlugin是将一些三方库单独打包，再通过DLLReferencePlugin�
 resolve.modules 的默认值为 ['node_modules']，所以在对 module 的 resolve 过程中，会依次查找 ./node_modules、../node_modules、../../node_modules 等，即沿着路径一层一层往上找，直到找到 node_modules。可以直接设置
 
 ```js
-`module.exports = {
-  //...
+module.exports = {
   resolve: {
-    [path.resolve(__dirname, 'node_modules')]
+    modules: [path.resolve(__dirname, 'node_modules')]
   },
-};`
+};
 ```
 
 避免了层层寻找 node_modules 的开销。
@@ -107,6 +106,16 @@ resolve.modules 的默认值为 ['node_modules']，所以在对 module 的 resol
 #### 优化 resolve.alias 配置
 
 resolve.alias 配置项通过别名来把原导入路径映射成一个新的导入路径，减少耗时的递归解析操作。
+
+```js
+const path = require('path');
+
+module.exports = {
+  resolve: {
+    alias: { utils: path.resolve(__dirname, 'src/utils/'),},
+  },
+};
+```
 
 ### 压缩
 
