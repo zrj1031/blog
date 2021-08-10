@@ -72,7 +72,7 @@ export default defineComponent({
 
 ### 附一篇[掘金文章](https://juejin.cn/post/6966042926853914654)的思路，纯css
 
-> 使用max-height: 3em，正常line-height: 1.5em, 3em就是2行, text一行显示的下时，title在顶上，text超出一行时（又因为max-height: 4em的原因，只能是2行），此时title刚好覆盖了上去
+> 父元素height: 1.5em, 只能显示一行，超出隐藏， title元素使用max-height: 3em，正常line-height: 1.5em, 3em就是2行, text一行能完全显示时，title在顶上，text超出一行时（又因为max-height: 3em的原因，只能是2行），此时title刚好覆盖了上去
 ![示例图](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5a73de39223142bf8b509d97ea20d6cf~tplv-k3u1fbpfcp-watermark.awebp)
 大体伪代码如下，
 ``` html
@@ -89,7 +89,7 @@ export default defineComponent({
   overflow: hidden;
   .text{
     display: block;
-    max-height: 4em;
+    max-height: 3em;
   }
   .title{
     display: block;
@@ -97,7 +97,7 @@ export default defineComponent({
     text-overflow: ellipsis;
     overflow: hidden;
     position: relative;
-    top: -4em;
+    top: -3em;
   }
 }
 ```
