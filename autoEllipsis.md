@@ -69,3 +69,35 @@ export default defineComponent({
 </style>
 
 ```
+
+### 附一篇[掘金文章](https://juejin.cn/post/6966042926853914654)的思路，纯css
+
+> 使用max-height: 3em，正常line-height: 1.5em, 3em就是2行, text一行显示的下时，title在顶上，text超出一行时（又因为max-height: 4em的原因，只能是2行），此时title刚好覆盖了上去
+![示例图](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5a73de39223142bf8b509d97ea20d6cf~tplv-k3u1fbpfcp-watermark.awebp)
+大体伪代码如下，
+``` html
+<div class="wrap">
+    <span class="text">CSS 实现优惠券的技巧 - 2021-03-26</span>
+    <span class="title" title="CSS 实现优惠券的技巧 - 2021-03-26">CSS 实现优惠券的技巧 - 2021-03-26</span>
+</li>
+```
+
+```less
+.wrap {
+  line-height: 1.5;
+  height: 1.5em;
+  overflow: hidden;
+  .text{
+    display: block;
+    max-height: 4em;
+  }
+  .title{
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    top: -4em;
+  }
+}
+```
