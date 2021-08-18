@@ -1,5 +1,7 @@
 # autoEllipsis
 
+[codesandbox体验地址](https://codesandbox.io/s/billowing-morning-98ww0?file=/src/App.vue)
+
 ## 背景
 
 有一个需求产品希望根据是否文字溢出（是否出现省略号）展示tooltip, 一开始觉得文字溢出是css的行为，js拿不到，只能写死固定字数,后面想想还是太糙了
