@@ -8,7 +8,7 @@
 
 ## 思路
 
-监听 ```offsetWidth``` 和 ```scrollWidth```
+监听 ```offsetWidth``` 和 ```scrollWidth```, 具体的相关[width扫盲帖](https://www.jianshu.com/p/2bd00720e2de)
 
 ```js
 <template>
