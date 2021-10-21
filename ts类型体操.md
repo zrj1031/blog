@@ -19,7 +19,7 @@ const data = toMap([
 
 ```
 
-先附上答案
+先附上答案, [typescript playGround](https://www.typescriptlang.org/play?#code/C4TwDgpgBAqgdgSwPZwCpIJJ2BATgZwgGNhk4AeGAPigF4oAKAKCliggA8c4ATfKAIZwQUAPyMA1gC5YASjo0AbkgQ8ZcCIrxN5nbn0YNpUBHABmeKBnm0lKnvJZirT9ZrwBuJkx7EANgK40GYArnAkZFDASACyAmDkTgDS7FwQvPz4wLimAOYANE4Aaqn6mdl5UAA+UHAhALYARniFrKil6QYA3lASECAySflQigJ+IRAyRQC+ANoAuq1QAEp0UKizdU1480xUDGCBAvX4MqiyMvBk6Fg4BMSkKOSrep38G1vNuPPOXbMACiY4CtZgByPogUHzeYyZZg0bjCBQ6ZQNxaXBULxMIgoLJQHgCYACNbROJgBizJw9CEyUFwY5I4YIia0gBeAAsBEhAOSagC+9UHTYZU3r9WkCXKMkZjFlQACMAA5pkx5rInEA)
 
 ```ts
 type UnionToIntersection<U> = (
