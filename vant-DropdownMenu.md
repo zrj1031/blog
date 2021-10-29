@@ -110,7 +110,7 @@ vant的实现, 给document绑定事件代理，通过```element.contains(event.t
 
 ```
 
-遇到的问题，至今没有解决，我们一般会使用ref传入target dom, 但遇到问题ref在```react-transition-group```结合使用时反复切换时会变成null的问题，记个TODO, 然后用了比较简单的方式暂时实现这个效果, 监听window的```click```事件，并且对targets的click事件阻止事件冒泡，注意不能是document，因为react 17之前都会把合成事件冒泡到了document上，再由document派发，此时在合成事件上阻止冒泡，document也监听到了click
+遇到的问题，至今没有解决，我们一般会使用ref传入target dom, 但遇到问题ref在```react-transition-group```结合使用时反复切换时会变成null的问题，记个TODO,参考[issue](https://github.com/reactjs/react-transition-group/issues/766),[codeSanBox](https://codesandbox.io/s/nice-ritchie-936j3?file=/index.js) 然后用了比较简单的方式暂时实现这个效果, 监听window的```click```事件，并且对targets的click事件阻止事件冒泡，注意不能是document，因为react 17之前都会把合成事件冒泡到了document上，再由document派发，此时在合成事件上阻止冒泡，document也监听到了click
 
 ```js
 useEffect(() => {
