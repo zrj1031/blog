@@ -1,5 +1,8 @@
 # DropdownMenu
 
+[github地址](https://github.com/zrj1031/awesome-react-mobile)
+[体验地址](https://zrj1031.github.io/awesome-react-mobile/dropdown)
+
 > 在前东家猪厂的时候, 部门开发[移动端组件库](https://nsfi.github.io/fishd-mobile-site/index.html#/zh-CN/components/dropdown), 当时市面上```react```版的移动端组件库质量都不太行（对，说的就是你, ```antd-mobile```([旧版本](https://antd-mobile-doc-v2.gitee.io/docs/react/introduce-cn))(现在重构后[v5版本](https://mobile.ant.design/zh)应该好很多了)）, 市面上做的比较好的主要是基于```Vue```的```Vant```, 然后想移植```DropdownMenu```组件, 就需要把实现从```Vue```翻译到```react```, 也是一次比较深入的阅读源码过程（开源项目的源码一般都比较复杂和高封装, 还是得带着一些为什么去读, 不然读起来会像无头苍蝇）
 
 体验了下demo, 难点应该是动画的处理和位置的计算
@@ -110,6 +113,8 @@ vant的实现, 给document绑定事件代理，通过```element.contains(event.t
 
 ```
 
+<strike>
+
 遇到的问题，至今没有解决，我们一般会使用ref传入target dom, 但遇到问题ref在```react-transition-group```结合使用时反复切换时会变成null的问题，记个TODO,参考[issue](https://github.com/reactjs/react-transition-group/issues/766),[codeSanBox](https://codesandbox.io/s/nice-ritchie-936j3?file=/index.js) 然后用了比较简单的方式暂时实现这个效果, 监听window的```click```事件，并且对targets的click事件阻止事件冒泡，注意不能是document，因为react 17之前都会把合成事件冒泡到了document上，再由document派发，此时在合成事件上阻止冒泡，document也监听到了click
 
 ```js
@@ -123,3 +128,59 @@ useEffect(() => {
 ```
 
 不过window上监听也有问题，只要页面上有其他地方阻止事件冒泡了，就关不掉，document上监听就不会有这样的问题
+
+</strike>
+
+ref问题解决，请教了下同事
+问题代码如下，我们会根据不同的condition生成一个```CSSTransition```组件，并通过ref去获取到其中的dom节点
+
+```js
+<CSSTransition
+  in={condition1}
+  unmountOnExit
+  classNames="alert"
+>
+  <div ref={ref}>content1</div>
+  <div>overlay</div>
+</CSSTransition>
+<CSSTransition
+  in={condition2}
+  unmountOnExit
+  classNames="alert"
+>
+  <div ref={ref}>content2</div>
+  <div>overlay</div>
+</CSSTransition>
+```
+
+如下代码可以捕获到ref的正确引用
+
+```js
+function Demo2({ children }) {
+  return <div>{children}</div>;
+}
+
+function Demo1() {
+  const ref = useRef(null);
+  const [show, setShow] = useState(false);
+  return (
+    <div>
+      Change Ref
+      <Button
+        onClick={() => setShow((pre) => !pre)}
+        size="lg"
+      >
+        change ref dom
+      </Button>
+      <Demo2>
+        {show && <div ref={ref}>Demo2</div>}
+      </Demo2>
+      <Demo2>
+        {!show && <span ref={ref}>Demo3</span>}
+      </Demo2>
+    </div>
+  );
+}
+```
+
+那问题应该就是```CSSTransition```高阶组件做了更多额外的处理，过程是```ref = div1 --> ref = div2 --> ref = null```, 而我们写的demo是```ref = div1 --> ref = null -->  ref = div2```, 最后的解决方案是采取了refs数组，每个```CSSTransition```都有独属于它的ref, 最后的过程```ref1 = div1 --> ref2 = div2 --> ref1 = null```
