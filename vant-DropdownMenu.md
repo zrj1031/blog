@@ -14,7 +14,7 @@
 
 ## Vant 最简接入
 
-> 相关参数应该可以意会，就不一一说明了, 具体可参照[Vant官方文档](https://youzan.github.io/vant/v3/#/zh-CN/dropdown-menu)
+> 相关参数应该可以意会，就不做过多赘述, 具体可参照[Vant官方文档](https://youzan.github.io/vant/v3/#/zh-CN/dropdown-menu)
 
 ```js
   <van-dropdown-menu>
@@ -54,8 +54,9 @@
 
 ![计算图](https://raw.githubusercontent.com/zrj1031/blogPic/main/20211019195028.png)
 
-如果是往下，实际要获取的位置就是绿色box，那top是蓝色box的bottom
-如果是往上，实际要获取的位置就是红色box，那bottom是100vh - 蓝色box的top
+如果PopUp是往下，实际要获取的位置就是绿色box，那top是蓝色box的bottom
+
+如果PopUp是往上，实际要获取的位置就是红色box，那bottom是100vh - 蓝色box的top
 
 ```js
 direction === 'down'
@@ -184,3 +185,10 @@ function Demo1() {
 ```
 
 那问题应该就是```CSSTransition```高阶组件做了更多额外的处理，过程是```ref = div1 --> ref = div2 --> ref = null```, 而我们写的demo是```ref = div1 --> ref = null -->  ref = div2```, 最后的解决方案是采取了refs数组，每个```CSSTransition```都有独属于它的ref, 最后的过程```ref1 = div1 --> ref2 = div2 --> ref1 = null```
+
+
+## zIndex计算 
+
+> TODO找个时间完善
+
+具体可参照[nutui](https://juejin.cn/post/6844904196739694605)这篇文章，vant的实现基本也差不多
