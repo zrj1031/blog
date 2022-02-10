@@ -1,0 +1,1 @@
+const t={key:"v-9f1f4afc",path:"/antvG6.html",title:"@antv/g6 \u4F7F\u7528",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:null,contributors:[]},filePathRelative:"antvG6.md"};export{t as data};
