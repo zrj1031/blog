@@ -160,6 +160,10 @@ console.log(regexp.exec(str)); // varName (word at position 4)
   ``` ^ $ \b \B (?=) (?!) (?<=) (?<!) ```
 ![placement](https://raw.githubusercontent.com/zrj1031/blogPic/main/placement.png)
 
+**但如果后面有跟具体的匹配字符，匹配的是字符**
+
+![pMatch](https://raw.githubusercontent.com/zrj1031/blogPic/main/pMatch.png)
+
 ## 贪婪模式和惰性模式
 
 正则表达式在匹配的时候默认会尽可能多的匹配，叫贪婪模式。通过在限定符后加 ?可以进行非贪婪匹配
@@ -304,7 +308,11 @@ const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
 /(?!yellow)./ 表示非 yellow 的任意元素
 /((?!yellow).)*/ 表示非 yellow 的任意元素可以 >=0 次出现。
 /^(((?!yellow).)*)$/ 表示从头至尾，必须非 yellow 的元素才能 >= 0 次出现。
-匹配 bytedance is xxx company // xxx不能是small或者poor
+
+/^((?!yellow).)*$/  后面不能有yellow
+/^(.(?<!yellow))*$/  前面不能有yellow
+
+// 匹配 bytedance is xxx company // xxx不能是small或者poor
 /bytedance is (?!small).+ company/.test('bytedance is small company') // false
 
 /bytedance is (?!small).+ company/.test('bytedance is big company') // true
