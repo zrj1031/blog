@@ -10,7 +10,7 @@
 * 第一次的登录流程没有结束(登出或者登录失败)前，不会接收第二次登录请求(LOGIN_REQUEST)
 * 点击Login，此时和后端鉴权是否能登录成功（假设接口很慢）,还在鉴权的同时点击Logout需要取消掉正在进行中的鉴权
 
-![loginButton](https://raw.githubusercontent.com/zrj1031/blogPic/main/20220211163710.png)
+![loginButton](/assets/redux-saga/loginButton.png)
 
 场景比较极端，单纯为了例证saga对流程的控制性
 
@@ -20,7 +20,7 @@
 
 但假设确实存在这么一个流程，且对按钮完全不做禁用和loading的蒙层，如果使用redux-thunk当然也能实现，但可能代码会比较零散，各种局部变量控制，而使用redux-saga就只需要以下相关代码，且相关的登录流程操作全部被写在一个saga里，代码的可读性会更好
 
-![loginFlow](https://raw.githubusercontent.com/zrj1031/blogPic/main/20220211163637.png)
+![loginFlow](/assets/redux-saga/loginFlow.png)
 
 首先一个while(true)的死循环能保证登录-登出-登录-登出这样的重复流程事件监听
 

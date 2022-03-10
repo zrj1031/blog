@@ -13,7 +13,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     sidebar: [
       '/regex.md',
       '/context.md',
-      '/vant-DropdownMenu.md',
+      '/dropdownMenu.md',
       '/autoEllipsis.md',
       '/ts.md',
       '/redux-saga.md',

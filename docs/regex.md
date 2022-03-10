@@ -6,15 +6,15 @@
 
 * 可视化
 
-  * https://regexper.com/#
+  * [https://regexper.com/#](https://regexper.com/#)
 
-  * https://jex.im/regulex/#!flags=&re=
+  * [https://jex.im/regulex/#!flags=&re=](https://jex.im/regulex/#!flags=&re=)
 
-  * https://regex101.com/
+  * [https://regex101.com/](https://regex101.com/)
 
 * 正则大全
 
-  * https://any86.github.io/any-rule/
+  * [https://any86.github.io/any-rule/](https://any86.github.io/any-rule/)
 
 ## 起步
 
@@ -55,7 +55,7 @@
 
 ### lastIndex
 
-![lastIndex](https://raw.githubusercontent.com/zrj1031/blogPic/main/lastIndex.png)
+![lastIndex](/assets/regex/lastIndex.png)
 
 ```js
 const reg = /\d/g
@@ -102,9 +102,12 @@ m 多行匹配
 ```
 
 u 使用unicode码的模式进行匹配
-https://github.com/xitu/gold-miner/blob/master/TODO/upcoming-regexp-features.md
-https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions/Unicode_Property_Escapes
-![Unicode](https://raw.githubusercontent.com/zrj1031/blogPic/main/Unicode.png)
+
+[https://github.com/xitu/gold-miner/blob/master/TODO/upcoming-regexp-features.md](https://github.com/xitu/gold-miner/blob/master/TODO/upcoming-regexp-features.md)
+
+[https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions/Unicode_Property_Escapes](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions/Unicode_Property_Escapes)
+
+![Unicode](/assets/regex/Unicode.png)
 
 s 允许 . 匹配换行符
 
@@ -119,7 +122,7 @@ s 允许 . 匹配换行符
 ```
 
 y 执行“粘性(sticky)”搜索,匹配从目标字符串的当前位置开始，具体可以参照
-https://javascript.info/regexp-sticky
+[https://javascript.info/regexp-sticky](https://javascript.info/regexp-sticky)
 
 **The flag `y` makes `regexp.exec` to search exactly at position `lastIndex`, not “starting from” it.**
 
@@ -158,11 +161,11 @@ console.log(regexp.exec(str)); // varName (word at position 4)
 
 位置的概念
   ``` ^ $ \b \B (?=) (?!) (?<=) (?<!) ```
-![placement](https://raw.githubusercontent.com/zrj1031/blogPic/main/placement.png)
+![placement](/assets/regex/placement.png)
 
-**但如果后面有跟具体的匹配字符，匹配的是字符**
+**但如果断言后面有跟具体的匹配字符，匹配的是字符，而不是位置了**
 
-![pMatch](https://raw.githubusercontent.com/zrj1031/blogPic/main/pMatch.png)
+![pMatch](/assets/regex/pMatch.png)
 
 ## 贪婪模式和惰性模式
 
@@ -256,9 +259,8 @@ const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
 /bytedance is (big|rich)\1* company/.test('bytedance is bigrich company') //false
 ```
 
-![notCapture](https://raw.githubusercontent.com/zrj1031/blogPic/main/notCapture.png)
-
-### 引用
+![notCapture](/assets/regex/notCapture.png)
+## 引用
 
 > 捕获了当然是为了引用的
 
@@ -271,13 +273,13 @@ const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
   /<([^>]+)>.*?</\1>/
 ```
 
-![numberMatch](https://raw.githubusercontent.com/zrj1031/blogPic/main/numberMatch.png)
+![numberMatch](/assets/regex/numberMatch.png)
 
 ```js
   /<(?<tag>[^>]+)>.*?<\/\k<tag>>/
 ```
 
-![TagMatch](https://raw.githubusercontent.com/zrj1031/blogPic/main/TagMatch.png)
+![TagMatch](/assets/regex/TagMatch.png)
 
 ### 反向引用
 
@@ -296,7 +298,7 @@ const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
   /(?<year>\d{4})-(\d{2})-(?<day>\d{2})/g
 ```
 
-![nameMatch](https://raw.githubusercontent.com/zrj1031/blogPic/main/nameMatch.png)
+![nameMatch](/assets/regex/nameMatch.png)
 
 ## 一些实战题
 
@@ -331,7 +333,7 @@ const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
 > 123456789 => 123,456,789
   `/(?=(?:\d{3})+$)/g`取出所有逗号的位置，再去掉首位的逗号 `\B`
 
-![moneyRegex](https://raw.githubusercontent.com/zrj1031/blogPic/main/moneyRegex.png)
+![moneyRegex](/assets/regex/moneyRegex.png)
 
 ```js
 '123456789'.replace(/\B(?=(?:\d{3})+$)/g, ',') // 123,456,789
@@ -382,8 +384,8 @@ while ((match = regexp.exec(str)) !== null) {
 
 ## 参考文章
 
-  - https://juejin.cn/post/7021672733213720613
+* [https://juejin.cn/post/7021672733213720613](https://juejin.cn/post/7021672733213720613)
 
-  - https://juejin.cn/post/6844903778408202253
+* [https://juejin.cn/post/6844903778408202253](https://juejin.cn/post/6844903778408202253)
 
-  - https://juejin.cn/post/7034329725422010375
+* [https://juejin.cn/post/7034329725422010375](https://juejin.cn/post/7034329725422010375)
