@@ -116,11 +116,7 @@ vant的实现, 给document绑定事件代理，通过```element.contains(event.t
 
 ## ref消失
 
-<strike>
-
-遇到的问题，至今没有解决，我们一般会使用ref传入target dom, 但遇到问题ref在```react-transition-group```结合使用时反复切换时会变成null的问题，记个TODO,参考[issue](https://github.com/reactjs/react-transition-group/issues/766),[codeSanBox](https://codesandbox.io/s/nice-ritchie-936j3?file=/index.js)
-
-</strike>
+~~遇到的问题，至今没有解决，我们一般会使用ref传入target dom, 但遇到问题ref在```react-transition-group```结合使用时反复切换时会变成null的问题，记个TODO,参考[issue](https://github.com/reactjs/react-transition-group/issues/766),[codeSanBox](https://codesandbox.io/s/nice-ritchie-936j3?file=/index.js)~~
 
 ref问题解决，请教了下同事
 问题代码如下，我们会根据不同的condition生成一个```CSSTransition```组件，并通过ref去获取到其中的dom节点
