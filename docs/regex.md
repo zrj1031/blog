@@ -322,7 +322,7 @@ const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
 /bytedance is (?!(small|poor)).+ company/.test('bytedance is poor company')
 
 // smallxxx不允许出现
-/bytedance is (?!\bsmall\b).+ company/.test('bytedance is smallsmall company') // false
+/bytedance is (?!small).+ company/.test('bytedance is smallsmall company') // false
 
 // 允许smallxxx出现
 /bytedance is (?!\bsmall\b).+ company/.test('bytedance is smallsmall company') // true

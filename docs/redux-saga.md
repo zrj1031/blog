@@ -39,7 +39,6 @@ generator的一些理解
 
 ```js
 const generatorFn = () => {
-const generatorFn = () => {
   function* generatorCreator() {
     const res1 = yield 123;
     console.log(res1) // '外部第一次传入的值'
