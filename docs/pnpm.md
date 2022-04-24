@@ -82,3 +82,9 @@ vue -> .pnpm/vue@3.2.33/node_modules/vue
 我们平时写代码一般也不会只有一个项目，那A项目依赖了foo, B项目依赖了foo, 我们如果在电脑的磁盘都重复依赖foo, 也是个浪费, 硬链就是帮我们解决这个问题的
 
 我们实际安装了`foo`, 软链指向了 `.pnpm/foo@v1/node_modules/foo`，此时再次硬链指向磁盘空间下`pnpm`开辟出来的`store`处
+
+## 参考文章
+
+[https://juejin.cn/post/7044807973868142622](https://juejin.cn/post/7044807973868142622)
+
+[https://juejin.cn/post/7001794162970361892](https://juejin.cn/post/7001794162970361892)
