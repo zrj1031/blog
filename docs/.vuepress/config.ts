@@ -11,6 +11,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   themeConfig: {
     logo: 'https://raw.githubusercontent.com/zrj1031/blogPic/main/avatar.jpeg',
     sidebar: [
+      '/monorepo.md',
       '/pnpm.md',
       '/regex.md',
       '/context.md',
