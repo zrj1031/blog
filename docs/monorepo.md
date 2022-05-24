@@ -9,7 +9,7 @@
 
 有些业务可能有bff模块, 拆成多个repo总觉得割裂
 
-一个需求如果涉及多个`repo`时，`multi repo`的`git`也显得不统一，a仓库有改动，b仓库有改动，`merge branch`和`code review`时都有一种割裂感, 明明做的是同一件事，却涉及那么多仓库
+一个需求如果涉及多个`repo`时，`multi repo`的`git`也显得不统一，a仓库有改动，b仓库有改动，`merge branch`和`code review`时都有一种割裂感, 明明做的是同一件事，却涉及那么多仓库，很容易理解你的变更对整个项目的影响
 
 ## 复用一些CI、CD
 
